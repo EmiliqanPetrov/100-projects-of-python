@@ -14,7 +14,7 @@ def encrypt(original_text, shift_amount):
         if letter.lower() in alphabet:
             shifted_position = alphabet.index(letter) + shift_amount
             if shifted_position >= 26:
-                cipher_text += alphabet[shifted_position - 26]
+                cipher_text += alphabet[shifted_position - 26 * (shifted_position // 26)]
             else:
                 cipher_text += alphabet[shifted_position]
         else:
@@ -30,7 +30,7 @@ def decrypt(original_text, shift_amount):
         if letter.lower() in alphabet:
             shifted_position = alphabet.index(letter) - shift_amount
             if shifted_position < 0:
-                cipher_text += alphabet[shifted_position]
+                cipher_text += alphabet[shifted_position + 26 * (shift_amount // 26)]
             else:
                 cipher_text += alphabet[shifted_position]
         else:
